@@ -24,6 +24,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     
+    - name: Install Linux dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtk2.0-0t64 libgtk-3-0t64 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb
+    
     - name: Install dependencies
       run: npm ci
     
@@ -33,6 +38,12 @@ jobs:
         echo "USERNAME=${{ secrets.ZERO_BANK_USERNAME }}" >> .env
         echo "PASSWORD=${{ secrets.ZERO_BANK_PASSWORD }}" >> .env
     
+    - name: Start virtual display
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        sleep 3
+     
     - name: Run Cypress tests
       run: npm run cypress:report
       env:
