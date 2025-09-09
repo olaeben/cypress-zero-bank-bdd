@@ -6,7 +6,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:headless": "cypress run --headless",
-    "cypress:report": "cypress run --reporter mochawesome --reporter-options reportDir=cy-report,overwrite=true,html=false,json=true,code=false",
+    "cypress:report": "cypress run --headless --reporter mochawesome --reporter-options reportDir=cy-report,overwrite=true,html=false,json=true,code=false",
     "cypress:report:html": "npm run cypress:report && npx marge cy-report/mochawesome.json --reportDir cy-report --inline"
   },
   "keywords": [],

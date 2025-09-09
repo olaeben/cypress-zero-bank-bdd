@@ -35,7 +35,9 @@ jobs:
     
     - name: Run Cypress tests
       run: npm run cypress:report
-    
+      env:
+        DISPLAY: :99
+     
     - name: Generate HTML report
       if: always()
       run: npx marge cy-report/mochawesome.json --reportDir cy-report --inline
