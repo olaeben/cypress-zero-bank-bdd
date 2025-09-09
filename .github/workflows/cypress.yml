@@ -29,9 +29,9 @@ jobs:
     
     - name: Create .env file
       run: |
-        echo "BASE_URL=https://opensource-demo.orangehrmlive.com/" >> .env
-        echo "USERNAME=Admin" >> .env
-        echo "PASSWORD=admin123" >> .env
+        echo "BASE_URL=http://zero.webappsecurity.com/" >> .env
+        echo "USERNAME=username" >> .env
+        echo "PASSWORD=password" >> .env
     
     - name: Run Cypress tests
       run: npm run cypress:report
